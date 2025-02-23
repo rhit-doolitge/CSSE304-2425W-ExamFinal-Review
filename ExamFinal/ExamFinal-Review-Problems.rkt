@@ -11,9 +11,25 @@
 ; Macros
 ;-----------------------------------------------
 
+; This takes in two arguments a #t or #f value that is the value you are looking for
+; and a list. This list can either be a direct #t or #f value or a pair.
+; The pairs come in (value single-argument-boolean-function) it should run the function
+; on the value given in the pair and see if the output is the same as the #t or #f value you are looking for
+; ex: (compare-truthiness #t ((5 number?)) returns #t
+; but (compare-truthiness #f ((5 number?)) returns #f
+; and (compare-truthiness #t (#t) returns #t
+; but (compare-truthiness #f (#t) returns #f
+
 (define-syntax compare-truthiness
   (syntax-rules ()
     [(_ ...) 'nyi]))
+
+; This function takes in infinite amount of arguments.
+; The aguments are either numbers or lists of numbers
+; it should multiply all the numbers that come in together
+; and output the result
+; ex: (product-all 3 4 5) return 60
+; and (product-all (3 4) (2)) returns 24
 
 (define-syntax product-all
   (syntax-rules ()
